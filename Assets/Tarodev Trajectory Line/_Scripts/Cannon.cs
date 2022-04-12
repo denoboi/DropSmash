@@ -25,7 +25,9 @@ public class Cannon : MonoBehaviour {
     /// for the tutorial and didn't look back
     /// </summary>
     private void HandleControls() {
-        if (Input.GetKey(KeyCode.S)) _barrelPivot.Rotate(Vector3.right * _rotateSpeed * Time.deltaTime);
+
+        return;
+        if (Input.GetMouseButton(0)) _barrelPivot.Rotate(Vector3.right * _rotateSpeed * Time.deltaTime);
         else if (Input.GetKey(KeyCode.W)) _barrelPivot.Rotate(Vector3.left * _rotateSpeed * Time.deltaTime);
 
         if (Input.GetKey(KeyCode.A)) {

@@ -24,8 +24,16 @@ namespace CMF
         //Update;
         void Update()
         {
-			//Rotate object;
+		
 			tr.Rotate(rotationAxis * rotationSpeed * Time.deltaTime);
+        }
+
+        private void OnCo(Collider other)
+        {
+            if(other.CompareTag("Ground"))
+            {
+                Destroy(this);
+            }
         }
     }
 }
