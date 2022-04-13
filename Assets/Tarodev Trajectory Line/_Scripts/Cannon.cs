@@ -19,7 +19,13 @@ public class Cannon : MonoBehaviour {
     [SerializeField] private AudioClip _clip;
     [SerializeField] private Transform _leftWheel, _rightWheel;
     [SerializeField] private ParticleSystem _launchParticles;
+    private Ball spawned;
 
+
+    private void Awake()
+    {
+        CreateHammer();
+    }
     /// <summary>
     /// This is absolute spaghetti and should not be look upon for inspiration. I quickly smashed this together
     /// for the tutorial and didn't look back
@@ -44,12 +50,21 @@ public class Cannon : MonoBehaviour {
 
         //Instantiating and throwing ball
         if (Input.GetMouseButtonUp(0)) {
-            var spawned = Instantiate(_ballPrefab, _ballSpawn.position, _ballSpawn.rotation);
 
+            spawned.GetComponent<Rigidbody>().isKinematic = false;
             spawned.Init(_ballSpawn.forward * _force, false);
             _launchParticles.Play();
             _source.PlayOneShot(_clip);
+
+            CreateHammer();
         }
+    }
+
+
+    void CreateHammer()
+    {
+        spawned = Instantiate(_ballPrefab, _ballSpawn.position, _ballSpawn.rotation);
+        spawned.GetComponent<Rigidbody>().isKinematic = true;
     }
 
     #endregion
