@@ -26,22 +26,24 @@ public class Cannon : MonoBehaviour {
     /// </summary>
     private void HandleControls() {
 
-        return;
-        if (Input.GetMouseButton(0)) _barrelPivot.Rotate(Vector3.right * _rotateSpeed * Time.deltaTime);
-        else if (Input.GetKey(KeyCode.W)) _barrelPivot.Rotate(Vector3.left * _rotateSpeed * Time.deltaTime);
+        
+        //if (Input.GetMouseButton(0)) _barrelPivot.Rotate(Vector3.right * _rotateSpeed * Time.deltaTime);
+        //else if (Input.GetKey(KeyCode.W)) _barrelPivot.Rotate(Vector3.left * _rotateSpeed * Time.deltaTime);
 
-        if (Input.GetKey(KeyCode.A)) {
-            transform.Rotate(Vector3.down * _rotateSpeed * Time.deltaTime);
-            _leftWheel.Rotate(Vector3.forward * _rotateSpeed * Time.deltaTime);
-            _rightWheel.Rotate(Vector3.back * _rotateSpeed * Time.deltaTime);
-        }
-        else if (Input.GetKey(KeyCode.D)) {
-            transform.Rotate(Vector3.up * _rotateSpeed * Time.deltaTime);
-            _leftWheel.Rotate(Vector3.back * _rotateSpeed * 1.5f * Time.deltaTime);
-            _rightWheel.Rotate(Vector3.forward * _rotateSpeed * 1.5f * Time.deltaTime);
-        }
+        //if (Input.GetKey(KeyCode.A)) {
+        //    transform.Rotate(Vector3.down * _rotateSpeed * Time.deltaTime);
+        //    _leftWheel.Rotate(Vector3.forward * _rotateSpeed * Time.deltaTime);
+        //    _rightWheel.Rotate(Vector3.back * _rotateSpeed * Time.deltaTime);
+        //}
+        //else if (Input.GetKey(KeyCode.D)) {
+        //    transform.Rotate(Vector3.up * _rotateSpeed * Time.deltaTime);
+        //    _leftWheel.Rotate(Vector3.back * _rotateSpeed * 1.5f * Time.deltaTime);
+        //    _rightWheel.Rotate(Vector3.forward * _rotateSpeed * 1.5f * Time.deltaTime);
+        //}
 
-        if (Input.GetKeyDown(KeyCode.Space)) {
+
+        //Instantiating and throwing ball
+        if (Input.GetMouseButtonUp(0)) {
             var spawned = Instantiate(_ballPrefab, _ballSpawn.position, _ballSpawn.rotation);
 
             spawned.Init(_ballSpawn.forward * _force, false);
