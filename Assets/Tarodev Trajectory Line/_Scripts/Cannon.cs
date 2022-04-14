@@ -73,7 +73,7 @@ public class Cannon : MonoBehaviour {
             _launchParticles.Play();
             _source.PlayOneShot(_clip);
 
-            //bunu sonradan cagiriyoruz ikinci hammer'a gectiginde
+            //bunu sonradan cagiriyoruz ikinci hammer'a gectiginde.
             CreateHammer();
         }
     }
