@@ -1,4 +1,5 @@
 using UnityEngine;
+using RayFire;
 
 public class Ball : MonoBehaviour {
     [SerializeField] private Rigidbody _rb;
@@ -17,5 +18,16 @@ public class Ball : MonoBehaviour {
         Instantiate(_poofPrefab, col.contacts[0].point, Quaternion.Euler(col.contacts[0].normal));
         _source.clip = _clips[Random.Range(0, _clips.Length)];
         _source.Play();
+
+        RayfireRigid rigid = col.collider.GetComponent<RayfireRigid>();
+
+        if (rigid == null)
+            return;
+
+        rigid.ApplyDamage(1, col.GetContact(0).point);
+
+
     }
+
+
 }
