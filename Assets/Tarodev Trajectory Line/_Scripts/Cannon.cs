@@ -58,7 +58,7 @@ public class Cannon : MonoBehaviour {
 
 
         //Instantiating and throwing ball
-        if (Input.GetMouseButtonUp(0)) {
+        if (Input.GetMouseButton(0)) {
 
             //isKinematic ve rotate objeyi aciyoruz.
             spawned.GetComponent<Rigidbody>().isKinematic = false;
