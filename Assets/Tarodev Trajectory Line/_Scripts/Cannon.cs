@@ -2,6 +2,11 @@ using UnityEngine;
 
 public class Cannon : MonoBehaviour {
     [SerializeField] private Projection _projection;
+    //
+    [SerializeField] private float _throwRate;
+
+    //ilk basta beklemesin diye infinity
+    private float _timer = Mathf.Infinity;
 
     private Ball spawned;
 
@@ -60,21 +65,22 @@ public class Cannon : MonoBehaviour {
         //Instantiating and throwing ball
         if (Input.GetMouseButton(0)) {
 
-            //isKinematic ve rotate objeyi aciyoruz.
-            spawned.GetComponent<Rigidbody>().isKinematic = false;
-            spawned.GetComponent<RotateObject>().enabled = true;
 
-            //we have 2 colliders 
-            foreach (var collider in spawned.GetComponentsInChildren<Collider>())
+            _timer += Time.deltaTime;
+            if(_timer >= _throwRate)
             {
-                collider.isTrigger = false;
+                ThrowHammer();
+                _timer = 0;
             }
-            spawned.Init(_ballSpawn.forward * _force, false);
-            _launchParticles.Play();
-            _source.PlayOneShot(_clip);
+            
 
-            //bunu sonradan cagiriyoruz ikinci hammer'a gectiginde.
-            CreateHammer();
+            
+        }
+
+        //elimizi cektigimizde hemen birakmasi icin. Input lag engelliyor
+        else if(Input.GetMouseButtonUp(0))
+        {
+            _timer = _throwRate + 1;
         }
     }
 
@@ -88,6 +94,27 @@ public class Cannon : MonoBehaviour {
         }
         spawned.GetComponent<Rigidbody>().isKinematic = true;
         spawned.GetComponent<RotateObject>().enabled = false;
+    }
+
+    void ThrowHammer()
+    {
+
+
+        //isKinematic ve rotate objeyi aciyoruz.
+        spawned.GetComponent<Rigidbody>().isKinematic = false;
+        spawned.GetComponent<RotateObject>().enabled = true;
+
+        //we have 2 colliders 
+        foreach (var collider in spawned.GetComponentsInChildren<Collider>())
+        {
+            collider.isTrigger = false;
+        }
+        spawned.Init(_ballSpawn.forward * _force, false);
+        _launchParticles.Play();
+        _source.PlayOneShot(_clip);
+
+        //bunu sonradan cagiriyoruz ikinci hammer'a gectiginde.
+        CreateHammer();
     }
 
     #endregion
