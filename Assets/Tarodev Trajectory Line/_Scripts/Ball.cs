@@ -25,6 +25,9 @@ public class Ball : MonoBehaviour {
             return;
 
         rigid.ApplyDamage(1, col.GetContact(0).point);
+        rigid.Activate();
+        rigid.Initialize();
+       
 
 
     }

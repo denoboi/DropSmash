@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1707797691}
   - component: {fileID: 7218949227579579621}
   - component: {fileID: 2734381436998894298}
+  - component: {fileID: 8908678112518633042}
   m_Layer: 0
   m_Name: Mallet2
   m_TagString: Untagged
@@ -211,6 +212,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.11497384, y: 0.7313901, z: 0.113836035}
   m_Center: {x: 0, y: 0.3641731, z: -0.0037402604}
+--- !u!114 &8908678112518633042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768835316837305219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13509f07d30285d41849a9180e13297f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _minScale: {x: 0, y: 0, z: 0}
+  _fadeDuration: 3.08
+  _speed: 0.13
 --- !u!1001 &7090121880173412740
 PrefabInstance:
   m_ObjectHideFlags: 0
