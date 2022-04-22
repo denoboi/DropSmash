@@ -25,11 +25,8 @@ using UnityEngine;
         
         void Update()
         {
-
             Rotate();
         }
-
-
 
         // if hammer object collides with the ground, destroy this script in order to stop rotation of the hammer.
         private void OnCollisionEnter(Collision collision)

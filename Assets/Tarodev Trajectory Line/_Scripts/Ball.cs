@@ -19,17 +19,22 @@ public class Ball : MonoBehaviour {
         _source.clip = _clips[Random.Range(0, _clips.Length)];
         _source.Play();
 
-        RayfireRigid rigid = col.collider.GetComponent<RayfireRigid>();
+       
+
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        RayfireRigid rigid = other.GetComponentInParent<RayfireRigid>();
 
         if (rigid == null)
             return;
 
-        rigid.ApplyDamage(1, col.GetContact(0).point);
+
+
+        //rigid.ApplyDamage(1, other.GetContact(0).point);
         rigid.Activate();
         rigid.Initialize();
-       
-
-
     }
 
 

@@ -10650,14 +10650,14 @@ MonoBehaviour:
     steps: 10
     duration: 15
   showConnections: 1
-  showNodes: 0
+  showNodes: 1
   checkConnectivity: 0
   checkNeed: 0
-  showGizmo: 0
+  showGizmo: 1
   rigidList: []
   cluster:
-    id: -1
-    tm: {fileID: 0}
+    id: 1
+    tm: {fileID: 1152667384}
     depth: 0
     pos: {x: 0, y: 0, z: 0}
     rot: {x: 0, y: 0, z: 0, w: 0}
@@ -10669,13 +10669,13 @@ MonoBehaviour:
     shards: []
     areaCollapse: 0
     minimumArea: 0
-    maximumArea: 0
-    sizeCollapse: 0
-    minimumSize: 0
-    maximumSize: 0
+    maximumArea: 0.73713785
+    sizeCollapse: 0.0466218
+    minimumSize: 0.0466218
+    maximumSize: 2.4702842
     randomCollapse: 0
     randomSeed: 0
-  initShardAmount: 0
+  initShardAmount: 243
 --- !u!114 &1152667382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10830,7 +10830,7 @@ MonoBehaviour:
     multiplier: 1
   fading:
     onDemolition: 1
-    onActivation: 0
+    onActivation: 1
     lifeType: 4
     lifeTime: 7
     lifeVariation: 3
@@ -13428,7 +13428,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1442899088}
   m_LocalRotation: {x: -0, y: 0.93619454, z: -0, w: 0.3514825}
-  m_LocalPosition: {x: -6.35, y: 3.82, z: -6.58}
+  m_LocalPosition: {x: -3.72, y: 3.82, z: -4.28}
   m_LocalScale: {x: 0.37690952, y: 0.7384956, z: 10.97895}
   m_Children: []
   m_Father: {fileID: 1409567239}

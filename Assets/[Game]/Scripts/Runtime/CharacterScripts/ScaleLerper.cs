@@ -41,7 +41,7 @@ public class ScaleLerper : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             //once 3 saniye bekleyecek
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(5);
 
             //ardindan lerp ile scale'i 0 yapacagim
             yield return FadeMallet(_defaultScale, _minScale, _fadeDuration);
