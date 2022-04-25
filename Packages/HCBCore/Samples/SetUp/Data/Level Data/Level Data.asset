@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Level Data
   m_EditorClassIdentifier: 
   Levels:
+  - LevelTypes: 00000000
+    LoadLevelID: Level 01
   - LevelTypes: 
-    LoadLevelID: Level-Development
+    LoadLevelID: Level 02
   - LevelTypes: 
-    LoadLevelID: 01 Level - SlideTest
+    LoadLevelID: Level 03
