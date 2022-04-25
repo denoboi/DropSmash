@@ -95,7 +95,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 1e93ff53dced9674da2aaa49c5f9ee92, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: e8406e63b15f6ae4b9cea7017cb56825, type: 2}
+      objectReference: {fileID: 2100000, guid: 3ca3c049927a91241b1f50891f9cbbb4, type: 2}
     - target: {fileID: 919132149155446097, guid: 1e93ff53dced9674da2aaa49c5f9ee92, type: 3}
       propertyPath: m_Name
       value: Polygon_6_diamond 2 gem_0 Variant
