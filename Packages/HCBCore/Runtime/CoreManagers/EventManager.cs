@@ -14,9 +14,12 @@ namespace HCB.Core
 
         #region Editor
         public static UnityEvent OnLevelDataChange = new UnityEvent();
+        public static StatEvent OnStatUpdated = new StatEvent();
         #endregion
     }
 
     public class PlayerDataEvent : UnityEvent<PlayerData> { }
     public class CurrencyEvent : UnityEvent<ExchangeType, int> { }
+
+    public class StatEvent : UnityEvent<string> { }
 }

@@ -14,22 +14,9 @@ namespace HCB.Utilities
         {
             CurrencyData = new Dictionary<ExchangeType, int>();
             CurrencyData[ExchangeType.Coin] = 0;
-            CurrentSkin = "None";
+            
         }
 
-        [BoxGroup("Skin Data")]
-        [ValueDropdown("GetSkins")]
-        public string CurrentSkin;
-
-
-        [BoxGroup("Skin Data")]
-        [ValueDropdown("GetSkins")]
-        public string CurrentLoadingSkin;
-
-
-        [BoxGroup("Skin Data")]
-        [ShowInInspector]
-        public int CurrentLoadingSkinTier;
 
         private Dictionary<ExchangeType, int> currencyData = new Dictionary<ExchangeType, int>();
         [BoxGroup("Currency Data")]

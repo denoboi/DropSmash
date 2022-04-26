@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 7218949227579579621}
   - component: {fileID: 2734381436998894298}
   - component: {fileID: 8908678112518633042}
+  - component: {fileID: 5479229088877017589}
   m_Layer: 0
   m_Name: Mallet2
   m_TagString: Untagged
@@ -226,6 +227,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _minScale: {x: 0, y: 0, z: 0}
   _fadeDuration: 3.08
+--- !u!114 &5479229088877017589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768835316837305219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afea321e2c60530478b25fda48486b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statData:
+    IdleStatData: {fileID: 11400000, guid: d3de08e5f666b7948862f4b50bf1b9da, type: 2}
 --- !u!1001 &7090121880173412740
 PrefabInstance:
   m_ObjectHideFlags: 0

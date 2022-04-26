@@ -21,10 +21,6 @@ EditorBuildSettings:
     path: Assets/[Game]/Levels/Level-Development.unity
     guid: 63562e2866d6042f9a0cd68a8482b663
   - enabled: 1
-    path: Packages/com.hyperboxgames.hcbsplinemovementsystem/Samples/Scenes/01 Level
-      - SlideTest.unity
-    guid: c33b81eb1a3c48046a149e0caa1b2d00
-  - enabled: 1
     path: Assets/[Game]/Levels/Level 01.unity
     guid: b1e4d620e81555549abb00aa8cc5562a
   - enabled: 1
