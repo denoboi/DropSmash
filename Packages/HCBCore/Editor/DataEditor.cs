@@ -36,6 +36,7 @@ public class DataEditor : OdinEditorWindow
     {
         SaveLoadManager.DeleteFile(SavedFileNameHolder.PlayerData);
         PlayerData = new PlayerData();
+        SaveLoadManager.DeleteFile("IdleData");
     }
 
 }

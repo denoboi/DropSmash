@@ -10,7 +10,7 @@ public class Ball : MonoBehaviour {
 
     public void Init(Vector3 velocity, bool isGhost) {
         _isGhost = isGhost;
-        _rb.AddForce(velocity, ForceMode.Impulse);
+        _rb.AddForce(velocity * _rb.mass, ForceMode.Impulse);
     }
 
     public void OnCollisionEnter(Collision col) {

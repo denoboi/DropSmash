@@ -2,10 +2,11 @@ using UnityEngine;
 using HCB.Core;
 using System;
 using UnityEngine.EventSystems;
+using HCB.IncrimantalIdleSystem;
 
-public class Cannon : MonoBehaviour {
+public class Cannon : StatObjectBase {
     [SerializeField] private Projection _projection;
-    //
+    
     [SerializeField] private float _throwRate;
 
     //ilk basta beklemesin diye infinity
@@ -29,7 +30,7 @@ public class Cannon : MonoBehaviour {
 
         //Tiklanilan sey Ui objesi ise return atiyor.
         if (EventSystem.current == null) return;
-        //if (EventSystem.current.IsPointerOverGameObject()) return;
+        if (EventSystem.current.IsPointerOverGameObject()) return;
         foreach (Touch touch in Input.touches)
         {
             int id = touch.fingerId;
@@ -121,6 +122,14 @@ public class Cannon : MonoBehaviour {
 
         //bunu sonradan cagiriyoruz ikinci hammer'a gectiginde.
         CreateHammer();
+    }
+
+    public override void UpdateStat(string id)
+    {
+        if (!string.Equals(StatData.IdleStatData.StatID, id))
+            return;
+
+        _throwRate = StatData.IdleStatData.InitialValue * StatData.IdleStatData.UpgradeMultiplier / StatData.Level;
     }
 
     #endregion
