@@ -5,9 +5,10 @@ using HCB.Utilities;
 using DG.Tweening;
 using TMPro;
 using HCB.Core;
+using HCB.IncrimantalIdleSystem;
 
 
-public class GemPanel : MonoBehaviour
+public class GemPanel : StatObjectBase
 {
     [SerializeField] GameObject _gemPrefab;
     [SerializeField] Transform _gemHolder;
@@ -15,7 +16,7 @@ public class GemPanel : MonoBehaviour
 
     private TextMeshProUGUI _scoreText;
     private int _numofGems = 0;
-
+    private int _incomeRate = 1;
 
     private void OnEnable()
     {
@@ -38,17 +39,33 @@ public class GemPanel : MonoBehaviour
         gem.transform.position = HCBUtilities.WorldToUISpace(transform.root.GetComponent<Canvas>(), worldPosition);
 
         //yukari cikartiyoruz daha sonra gemleri yok ediyoruz. + DoPunchScale
-        gem.transform.DOLocalMove(Vector3.zero, .5f).OnComplete(() => 
-        { Destroy(gem);
+        gem.transform.DOLocalMove(Vector3.zero, .5f).OnComplete(() =>
+        {
+            Destroy(gem);
             if (_punchTween != null) //to prevent punchtween bug(it was too big on UI)
                 _punchTween.Kill(true);
-         _punchTween = _gemHolder.transform.DOPunchScale(Vector3.one * 0.1f, 0.5f);
+            _punchTween = _gemHolder.transform.DOPunchScale(Vector3.one * 0.1f, 0.5f);
 
             //scoretextupdate
-            _scoreText.text = _numofGems.ToString();
-            _numofGems += 1;
+            ScoreTextUpdate();
         });
 
         
      }
+
+    private void ScoreTextUpdate()
+    {
+        _scoreText.text = _numofGems.ToString();
+        
+        _numofGems += _incomeRate;
+    }
+
+    public override void UpdateStat(string id)
+    {
+        if (!string.Equals(StatData.IdleStatData.StatID, id))
+            return;
+        //Incremental coin Upgrade
+        _incomeRate = (int)StatData.CurrentValue;
+
+    }
 }

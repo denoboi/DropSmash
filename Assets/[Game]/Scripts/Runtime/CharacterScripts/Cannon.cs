@@ -15,9 +15,6 @@ public class Cannon : StatObjectBase {
     private Ball spawned;
 
     //rotate'i basta kapatmak icin cagiriyorum.
-   
-    
-
 
     private void Awake()
     {
