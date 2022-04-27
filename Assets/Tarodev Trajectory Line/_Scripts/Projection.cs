@@ -15,11 +15,15 @@ public class Projection : MonoBehaviour {
         CreatePhysicsScene();
     }
 
-    private void CreatePhysicsScene() {
+    private void CreatePhysicsScene()
+    {
+
+
         _simulationScene = SceneManager.CreateScene("Simulation", new CreateSceneParameters(LocalPhysicsMode.Physics3D));
         _physicsScene = _simulationScene.GetPhysicsScene();
 
-        foreach (Transform obj in _obstaclesParent) {
+        foreach (Transform obj in _obstaclesParent)
+        {
             var ghostObj = Instantiate(obj.gameObject, obj.position, obj.rotation);
             ghostObj.GetComponent<Renderer>().enabled = false;
             SceneManager.MoveGameObjectToScene(ghostObj, _simulationScene);
