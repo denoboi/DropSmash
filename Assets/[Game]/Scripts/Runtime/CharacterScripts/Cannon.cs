@@ -18,7 +18,7 @@ public class Cannon : StatObjectBase {
 
     private void Awake()
     {
-        CreateHammer();        
+        CreateHammer();       
     }
 
    
@@ -98,6 +98,10 @@ public class Cannon : StatObjectBase {
         }
         spawned.GetComponent<Rigidbody>().isKinematic = true;
         spawned.GetComponent<RotateObject>().enabled = false;
+
+        //meshrenderer'i kapatiyorum cunku ikinci bir sey atiyor bu spawn ettigimiz. Cannon ucundaki top. Fake ediyorum aslinda
+        //(InChildren yapmak gerekiyor dikkat)
+        spawned.GetComponentInChildren<MeshRenderer>().enabled = false;
     }
 
     void ThrowHammer()
@@ -107,6 +111,8 @@ public class Cannon : StatObjectBase {
         //isKinematic ve rotate objeyi aciyoruz.
         spawned.GetComponent<Rigidbody>().isKinematic = false;
         spawned.GetComponent<RotateObject>().enabled = true;
+
+        spawned.GetComponentInChildren<MeshRenderer>().enabled = true;
 
         //we have 2 colliders 
         foreach (var collider in spawned.GetComponentsInChildren<Collider>())

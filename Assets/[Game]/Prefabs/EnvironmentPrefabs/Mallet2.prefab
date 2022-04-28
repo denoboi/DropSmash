@@ -308,6 +308,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mallet_2 Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 6012380035597851286, guid: ff341008fa7cf964484592ead235bc9e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7867793277072919232, guid: ff341008fa7cf964484592ead235bc9e, type: 3}
       propertyPath: _rb
       value: 
