@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using HCB.Core;
+using System.Collections;
 
 public class Projection : MonoBehaviour {
     [SerializeField] private LineRenderer _line;
@@ -11,13 +13,29 @@ public class Projection : MonoBehaviour {
     private PhysicsScene _physicsScene;
     private readonly Dictionary<Transform, Transform> _spawnedObjects = new Dictionary<Transform, Transform>();
 
+    private void OnEnable()
+    {
+        LevelManager.Instance.OnLevelFinish.AddListener(()=> StartCoroutine(UnloadScene()));
+    }
+
+    private void OnDisable()
+    {
+        LevelManager.Instance.OnLevelFinish.RemoveListener(() => StartCoroutine(UnloadScene()));
+    }
+
+
     private void Start() {
         CreatePhysicsScene();
     }
 
+    IEnumerator UnloadScene()
+    {
+        yield return SceneManager.UnloadSceneAsync(_simulationScene);
+    }
+
     private void CreatePhysicsScene()
     {
-
+        
 
         _simulationScene = SceneManager.CreateScene("Simulation", new CreateSceneParameters(LocalPhysicsMode.Physics3D));
         _physicsScene = _simulationScene.GetPhysicsScene();

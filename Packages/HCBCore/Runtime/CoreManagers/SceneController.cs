@@ -38,6 +38,9 @@ namespace HCB.Core
             loadingInProgress = true;
             yield return new WaitForSeconds(2f);
 
+            
+
+
             for (int i = 0; i < SceneManager.sceneCount; i++)
             {
                 var scene = SceneManager.GetSceneAt(i);

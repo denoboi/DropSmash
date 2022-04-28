@@ -6,7 +6,7 @@ using DG.Tweening;
 using TMPro;
 using HCB.Core;
 using HCB.IncrimantalIdleSystem;
-
+using UnityEngine.UI;
 
 public class GemPanel : StatObjectBase
 {
@@ -33,10 +33,13 @@ public class GemPanel : StatObjectBase
         SceneController.Instance.OnSceneLoaded.RemoveListener(() => _scoreText.text = 0.ToString());
     }
 
-    void CreateGemImage(Vector3 worldPosition)
+    void CreateGemImage(Vector3 worldPosition, Color color)
     {
         GameObject gem = Instantiate(_gemPrefab, _gemHolder);
         gem.transform.position = HCBUtilities.WorldToUISpace(transform.root.GetComponent<Canvas>(), worldPosition);
+
+        //changing color of 
+        gem.GetComponent<Image>().color = color;
 
         //yukari cikartiyoruz daha sonra gemleri yok ediyoruz. + DoPunchScale
         gem.transform.DOLocalMove(Vector3.zero, .5f).OnComplete(() =>

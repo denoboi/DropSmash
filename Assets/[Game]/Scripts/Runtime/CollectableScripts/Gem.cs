@@ -6,6 +6,10 @@ using UnityEngine;
 
 public class Gem : MonoBehaviour
 {
+
+    [SerializeField] Color _color;
+
+
     private GemManager gemManager ;
     private void Awake()
     {
@@ -38,6 +42,6 @@ public class Gem : MonoBehaviour
     //this is the method that throws gems to the upper right. I invoked it here and listened in GemPanel.cs
     void OnRevealed()
     {
-        EventManager.OnRevealed.Invoke(transform.position);
+        EventManager.OnRevealed.Invoke(transform.position, _color);
     }
 }

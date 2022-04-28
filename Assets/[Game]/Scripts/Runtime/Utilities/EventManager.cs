@@ -7,6 +7,7 @@ public static class EventManager
 {
     //Use this event manager for your custom ingame events.
 
-    public static UnityEvent<Vector3> OnRevealed = new UnityEvent<Vector3>();
+    public static UnityEvent<Vector3, Color> OnRevealed = new UnityEvent<Vector3, Color>();
+
 
 }
