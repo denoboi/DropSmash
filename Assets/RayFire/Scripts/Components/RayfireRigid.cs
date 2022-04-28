@@ -125,6 +125,13 @@ namespace RayFire
                 //AwakeMethods();
                 //StartMethods();
             }
+            else
+            {
+                for (int i = 0; i < transform.childCount; i++)
+                {
+                    transform.GetChild(i).gameObject.AddComponent<MeshCollider>();
+                }
+            }
         }
 
         // Activation
