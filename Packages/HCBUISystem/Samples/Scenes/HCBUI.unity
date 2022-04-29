@@ -689,7 +689,7 @@ CanvasGroup:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1081093560}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
@@ -888,8 +888,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278575226
+  m_fontColor: {r: 0.47979784, g: 0.8773585, b: 0.020692414, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1366,15 +1366,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1129621102648833472, guid: a499a6a5009060643ba3719b3ae5447f, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 0.99479
       objectReference: {fileID: 0}
     - target: {fileID: 1129621102648833472, guid: a499a6a5009060643ba3719b3ae5447f, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 0.99479
       objectReference: {fileID: 0}
     - target: {fileID: 1129621102648833472, guid: a499a6a5009060643ba3719b3ae5447f, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 0.99479
       objectReference: {fileID: 0}
     - target: {fileID: 1129621102648833472, guid: a499a6a5009060643ba3719b3ae5447f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1440,6 +1440,10 @@ PrefabInstance:
       propertyPath: statData.IdleStatData
       value: 
       objectReference: {fileID: 11400000, guid: ae2d0fd210902794ead19b4e8d72cf18, type: 2}
+    - target: {fileID: 9053287611355672745, guid: a499a6a5009060643ba3719b3ae5447f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -61
+      objectReference: {fileID: 0}
     - target: {fileID: 9053287611355672746, guid: a499a6a5009060643ba3719b3ae5447f, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -2293,6 +2297,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8218653111550720194, guid: 189a274970ef7426e97cd7f07cbf7389, type: 3}
       propertyPath: m_Alpha
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8218653111550720194, guid: 189a274970ef7426e97cd7f07cbf7389, type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8218653111550720194, guid: 189a274970ef7426e97cd7f07cbf7389, type: 3}

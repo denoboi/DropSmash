@@ -1,5 +1,6 @@
 using UnityEngine;
 using RayFire;
+using HCB.Core;
 
 public class Ball : MonoBehaviour {
     [SerializeField] private Rigidbody _rb;
@@ -37,9 +38,11 @@ public class Ball : MonoBehaviour {
         if (rigid == null)
             return;
 
-        if (other.gameObject.CompareTag("Rock"))
+        if (other.gameObject.CompareTag("Rock")) //hammer kaya'ya carptigi zaman.
         {
             Invoke("DestroyGameObject", .5f);
+            HapticManager.Haptic(HapticTypes.RigidImpact);
+
         }
 
         //rigid.ApplyDamage(1, other.GetContact(0).point);

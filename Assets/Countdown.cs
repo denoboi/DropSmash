@@ -25,7 +25,7 @@ public class Countdown : MonoBehaviour
     [SerializeField] TextMeshProUGUI _countdownText;
     void Start()
     {
-        _currentTime = startingTime;
+        //_currentTime = startingTime;
     }
     void Update()
     {
@@ -35,29 +35,32 @@ public class Countdown : MonoBehaviour
 
     void Timer()
     {
+        if (!GameManager.Instance.IsGameStarted)
+            return;
 
         _currentTime -= 1 * Time.deltaTime;
         _countdownText.text = _currentTime.ToString("0");
 
         if(_currentTime <= 35)
         {
-            _countdownText.color = Color.green;
+            _countdownText.color = new Color32(123,224,6,255);
         }
 
         if(_currentTime <= 20 && _currentTime >= 10)
         {
-            _countdownText.color = Color.yellow;
+            _countdownText.color = new Color32(248,144,6,255);
         }
 
 
 
         if(_currentTime <= 10)
         {
-            _countdownText.color = Color.HSVToRGB(1,0,1);
+            //you should say "new" and give 4 parameters
+            _countdownText.color = new Color32(166,4,23,255);
 
             if (_punchTween != null) //to prevent punchtween bug(it was too big on UI)
                 _punchTween.Kill(true);
-            _punchTween = _countdownText.transform.DOPunchScale(Vector3.one * 0.1f, 0.5f);
+            _punchTween = _countdownText.transform.DOPunchScale(Vector3.one * 1f, 5f,1,.5f);
             
         }
 
