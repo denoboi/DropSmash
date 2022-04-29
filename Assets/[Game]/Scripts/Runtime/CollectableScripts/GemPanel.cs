@@ -59,6 +59,8 @@ public class GemPanel : StatObjectBase
     private void ScoreTextUpdate()
     {
         _scoreText.text = _numofGems.ToString();
+
+        
         
         _numofGems += _incomeRate;
     }
@@ -67,8 +69,10 @@ public class GemPanel : StatObjectBase
     {
         if (!string.Equals(StatData.IdleStatData.StatID, id))
             return;
-        //Incremental coin Upgrade
+
         _incomeRate = (int)StatData.CurrentValue;
+        //Incremental coin Upgrade
+        //_incomeRate = (int)StatData.CurrentValue;
 
     }
 }
