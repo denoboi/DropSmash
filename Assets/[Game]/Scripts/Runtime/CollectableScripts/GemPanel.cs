@@ -24,13 +24,13 @@ public class GemPanel : StatObjectBase
         EventManager.OnRevealed.AddListener(CreateGemImage);
         
         //her level degisiminde score 0'lamak icin
-        SceneController.Instance.OnSceneLoaded.AddListener(() => _scoreText.text = 0.ToString()) ;
+        //SceneController.Instance.OnSceneLoaded.AddListener(() => _scoreText.text = 0.ToString()) ;
     }
 
     private void OnDisable()
     {
         EventManager.OnRevealed.RemoveListener(CreateGemImage);
-        SceneController.Instance.OnSceneLoaded.RemoveListener(() => _scoreText.text = 0.ToString());
+        //SceneController.Instance.OnSceneLoaded.RemoveListener(() => _scoreText.text = 0.ToString());
     }
 
     void CreateGemImage(Vector3 worldPosition, Color color)
@@ -70,9 +70,10 @@ public class GemPanel : StatObjectBase
         if (!string.Equals(StatData.IdleStatData.StatID, id))
             return;
 
-        _incomeRate = (int)StatData.CurrentValue;
         //Incremental coin Upgrade
-        //_incomeRate = (int)StatData.CurrentValue;
+        _incomeRate = (int)StatData.CurrentValue;
+        
+        
 
     }
 }
