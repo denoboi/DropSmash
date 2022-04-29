@@ -36,7 +36,7 @@ public class Gem : StatObjectBase
             Debug.Log("HITTHEGROUND");
             
             //Wait for ... sec after hit the ground
-            Invoke("OnRevealed", 3);
+            Invoke("OnRevealed", 2);
             
             
         }
