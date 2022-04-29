@@ -19,8 +19,15 @@ public class Ball : MonoBehaviour {
         _source.clip = _clips[Random.Range(0, _clips.Length)];
         _source.Play();
 
+        
+
        
 
+    }
+
+    void DestroyGameObject()
+    {
+        Destroy(gameObject);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -30,7 +37,10 @@ public class Ball : MonoBehaviour {
         if (rigid == null)
             return;
 
-
+        if (other.gameObject.CompareTag("Rock"))
+        {
+            Invoke("DestroyGameObject", .5f);
+        }
 
         //rigid.ApplyDamage(1, other.GetContact(0).point);
         rigid.Activate();

@@ -28,7 +28,7 @@ public class Gem : MonoBehaviour
         {
             Debug.Log("HITTHEGROUND");
             
-            //Wait for 5 sec after hit the ground
+            //Wait for ... sec after hit the ground
             Invoke("OnRevealed", 3);
             
             
