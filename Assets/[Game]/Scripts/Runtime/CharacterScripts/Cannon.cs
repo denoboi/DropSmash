@@ -69,7 +69,7 @@ public class Cannon : StatObjectBase {
         //Instantiating and throwing ball
         if (Input.GetMouseButton(0)) {
 
-
+            HapticManager.Haptic(HapticTypes.RigidImpact);
             _timer += Time.deltaTime;
             if(_timer >= _throwRate)
             {

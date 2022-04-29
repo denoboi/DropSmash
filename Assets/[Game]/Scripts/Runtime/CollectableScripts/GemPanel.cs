@@ -49,6 +49,8 @@ public class GemPanel : StatObjectBase
                 _punchTween.Kill(true);
             _punchTween = _gemHolder.transform.DOPunchScale(Vector3.one * 0.1f, 0.5f);
 
+            HapticManager.Haptic(HapticTypes.SoftImpact);
+
             //scoretextupdate
             ScoreTextUpdate();
         });
