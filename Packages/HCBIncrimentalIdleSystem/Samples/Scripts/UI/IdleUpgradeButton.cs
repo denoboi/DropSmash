@@ -60,6 +60,10 @@ namespace HCB.IncrimantalIdleSystem.Examples
             }
 
             base.UpgradeStat();
+
+            GameManager.Instance.PlayerData.CurrencyData[ExchangeType.Coin] -= (int)StatData.CurrentCost;
+            EventManager.OnPlayerDataChange.Invoke();
+
             StatLevelText.SetText("lvl " + StatData.Level);
             StatCostText.SetText(StatData.CurrentCost.ToString());
         }

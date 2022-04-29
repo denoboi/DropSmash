@@ -8,6 +8,7 @@ using HCB.Core;
 using HCB.IncrimantalIdleSystem;
 using UnityEngine.UI;
 
+
 public class GemPanel : StatObjectBase
 {
     [SerializeField] GameObject _gemPrefab;
@@ -18,20 +19,39 @@ public class GemPanel : StatObjectBase
     private int _numofGems = 0;
     private int _incomeRate = 1;
 
-    private void OnEnable()
+
+
+    protected override void OnEnable()
     {
+        if (Managers.Instance == null)
+            return;
+
+        SceneController.Instance.OnSceneLoaded.AddListener(UpdateText);
+        EventManager.OnPlayerDataChange.AddListener(UpdateText);
+
         _scoreText = GetComponentInChildren<TextMeshProUGUI>();
-        EventManager.OnRevealed.AddListener(CreateGemImage);
-        
-        //her level degisiminde score 0'lamak icin
-        //SceneController.Instance.OnSceneLoaded.AddListener(() => _scoreText.text = 0.ToString()) ;
+        Events.OnRevealed.AddListener(CreateGemImage);
     }
 
-    private void OnDisable()
+    protected override void OnDisable()
     {
-        EventManager.OnRevealed.RemoveListener(CreateGemImage);
+        if (Managers.Instance == null)
+            return;
+
+        SceneController.Instance.OnSceneLoaded.RemoveListener(UpdateText);
+        EventManager.OnPlayerDataChange.RemoveListener(UpdateText);
+
+        Events.OnRevealed.RemoveListener(CreateGemImage);
         //SceneController.Instance.OnSceneLoaded.RemoveListener(() => _scoreText.text = 0.ToString());
     }
+
+    private void UpdateText()
+    {
+        _scoreText.SetText(GameManager.Instance.PlayerData.CurrencyData[HCB.ExchangeType.Coin].ToString("N0"));
+    }
+
+
+
 
     void CreateGemImage(Vector3 worldPosition, Color color)
     {
@@ -52,20 +72,13 @@ public class GemPanel : StatObjectBase
             HapticManager.Haptic(HapticTypes.SoftImpact);
 
             //scoretextupdate
-            ScoreTextUpdate();
+            
         });
 
         
      }
 
-    private void ScoreTextUpdate()
-    {
-        _scoreText.text = _numofGems.ToString();
-
-        
-        
-        _numofGems += _incomeRate;
-    }
+   
 
     public override void UpdateStat(string id)
     {
