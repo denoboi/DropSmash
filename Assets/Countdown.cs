@@ -22,10 +22,11 @@ public class Countdown : MonoBehaviour
     private float _currentTime;
     public float startingTime = 10f;
 
-    [SerializeField] TextMeshProUGUI _countdownText;
+    TextMeshProUGUI _countdownText;
     void Start()
     {
         //_currentTime = startingTime;
+        _countdownText = GetComponent<TextMeshProUGUI>();
     }
     void Update()
     {
@@ -35,7 +36,7 @@ public class Countdown : MonoBehaviour
 
     void Timer()
     {
-        if (!GameManager.Instance.IsGameStarted)
+        if (!LevelManager.Instance.IsLevelStarted)
             return;
 
         _currentTime -= 1 * Time.deltaTime;

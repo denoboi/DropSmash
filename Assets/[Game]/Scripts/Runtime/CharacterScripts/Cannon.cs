@@ -82,10 +82,10 @@ public class Cannon : StatObjectBase {
         }
 
         //elimizi cektigimizde hemen birakmasi icin. Input lag engelliyor
-        else if(Input.GetMouseButtonUp(0))
-        {
-            _timer = _throwRate + 1;
-        }
+        //else if(Input.GetMouseButtonUp(0))
+        //{
+        //    _timer = _throwRate + 1;
+        //}
     }
 
     //Awake'de Instantiate ediyoruz isKinematic acik. Yoksa basta yere dusuyor.

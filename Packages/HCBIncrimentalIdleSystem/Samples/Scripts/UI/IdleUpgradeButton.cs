@@ -31,6 +31,7 @@ namespace HCB.IncrimantalIdleSystem.Examples
 
             SceneController.Instance.OnSceneLoaded.AddListener(InitializeButton);
             Button.onClick.AddListener(UpgradeStat);
+            EventManager.OnStatUpdated.AddListener(CheckBuyablity);
         }
 
         private void OnDisable()
@@ -38,8 +39,14 @@ namespace HCB.IncrimantalIdleSystem.Examples
             if (Managers.Instance == null)
                 return;
 
-            SceneController.Instance.OnSceneLoaded.AddListener(InitializeButton);
-            Button.onClick.AddListener(UpgradeStat);
+            SceneController.Instance.OnSceneLoaded.RemoveListener(InitializeButton);
+            Button.onClick.RemoveListener(UpgradeStat);
+            EventManager.OnStatUpdated.RemoveListener(CheckBuyablity);
+        }
+
+        private void CheckBuyablity(string id)
+        {
+            Button.interactable = GameManager.Instance.PlayerData.CurrencyData[StatData.IdleStatData.ExchangeType] > StatData.CurrentCost;
         }
 
         private void InitializeButton()
@@ -59,11 +66,12 @@ namespace HCB.IncrimantalIdleSystem.Examples
                 return;
             }
 
-            base.UpgradeStat();
 
             GameManager.Instance.PlayerData.CurrencyData[ExchangeType.Coin] -= (int)StatData.CurrentCost;
+            //EventManager.OnCurrencyInteracted.Invoke(StatData.IdleStatData.ExchangeType, GameManager.Instance.PlayerData.CurrencyData[StatData.IdleStatData.ExchangeType]);
             EventManager.OnPlayerDataChange.Invoke();
-
+            base.UpgradeStat();
+            Button.interactable = GameManager.Instance.PlayerData.CurrencyData[StatData.IdleStatData.ExchangeType] > StatData.CurrentCost;
             StatLevelText.SetText("lvl " + StatData.Level);
             StatCostText.SetText(StatData.CurrentCost.ToString());
         }
