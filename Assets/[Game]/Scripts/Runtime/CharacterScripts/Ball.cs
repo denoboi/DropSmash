@@ -40,7 +40,7 @@ public class Ball : MonoBehaviour {
 
         if (other.gameObject.CompareTag("Rock")) //hammer kaya'ya carptigi zaman.
         {
-            Invoke("DestroyGameObject", .5f);
+            Invoke("DestroyGameObject", 1f);
             HapticManager.Haptic(HapticTypes.RigidImpact);
 
         }
