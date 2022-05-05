@@ -8,7 +8,7 @@ public class Cannon : StatObjectBase {
     [SerializeField] private Projection _projection;
     
     [SerializeField] private float _throwRate;
-
+    private bool _isControllable;
     //ilk basta beklemesin diye infinity
     private float _timer = Mathf.Infinity;
 
@@ -18,12 +18,28 @@ public class Cannon : StatObjectBase {
 
     private void Awake()
     {
+        _isControllable = true;
         CreateHammer();       
     }
 
-   
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        LevelManager.Instance.OnLevelFinish.AddListener(() => _isControllable = false);
+    }
+
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+        LevelManager.Instance.OnLevelFinish.RemoveListener(() => _isControllable = false);
+    }
+
+
 
     private void Update() {
+
+        if (!_isControllable)
+            return;
 
         //Tiklanilan sey Ui objesi ise return atiyor.
         if (EventSystem.current == null) return;
@@ -39,6 +55,7 @@ public class Cannon : StatObjectBase {
 
         HandleControls();
 
+       
         _projection.SimulateTrajectory(_ballPrefab, _ballSpawn.position, _ballSpawn.forward * _force);
     }
 

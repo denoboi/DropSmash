@@ -7,7 +7,7 @@ using System.Collections;
 public class Projection : MonoBehaviour {
     [SerializeField] private LineRenderer _line;
     [SerializeField] private int _maxPhysicsFrameIterations = 100;
-    [SerializeField] private Transform _obstaclesParent;
+    private Transform _obstaclesParent;
 
     private Scene _simulationScene;
     private PhysicsScene _physicsScene;
@@ -16,11 +16,14 @@ public class Projection : MonoBehaviour {
     private void OnEnable()
     {
         LevelManager.Instance.OnLevelFinish.AddListener(()=> StartCoroutine(UnloadScene()));
+        
+        
     }
 
     private void OnDisable()
     {
         LevelManager.Instance.OnLevelFinish.RemoveListener(() => StartCoroutine(UnloadScene()));
+        
     }
 
 
@@ -40,13 +43,13 @@ public class Projection : MonoBehaviour {
         _simulationScene = SceneManager.CreateScene("Simulation", new CreateSceneParameters(LocalPhysicsMode.Physics3D));
         _physicsScene = _simulationScene.GetPhysicsScene();
 
-        foreach (Transform obj in _obstaclesParent)
-        {
-            var ghostObj = Instantiate(obj.gameObject, obj.position, obj.rotation);
-            ghostObj.GetComponent<Renderer>().enabled = false;
-            SceneManager.MoveGameObjectToScene(ghostObj, _simulationScene);
-            if (!ghostObj.isStatic) _spawnedObjects.Add(obj, ghostObj.transform);
-        }
+        //foreach (Transform obj in _obstaclesParent)
+        //{
+        //    var ghostObj = Instantiate(obj.gameObject, obj.position, obj.rotation);
+        //    ghostObj.GetComponent<Renderer>().enabled = false;
+        //    SceneManager.MoveGameObjectToScene(ghostObj, _simulationScene);
+        //    if (!ghostObj.isStatic) _spawnedObjects.Add(obj, ghostObj.transform);
+        //}
     }
 
     private void Update() {
@@ -56,7 +59,12 @@ public class Projection : MonoBehaviour {
         }
     }
 
+    
     public void SimulateTrajectory(Ball ballPrefab, Vector3 pos, Vector3 velocity) {
+
+        if (_simulationScene == null)
+            return;
+
         var ghostObj = Instantiate(ballPrefab, pos, Quaternion.identity);
         SceneManager.MoveGameObjectToScene(ghostObj.gameObject, _simulationScene);
 
